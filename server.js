@@ -1,5 +1,4 @@
-import dotenv from "dotenv";
-dotenv.config({ path: "./.env" });
+import "dotenv/config";
 import mongoose from "mongoose";
 import { app } from "./app.js";
 
@@ -15,8 +14,8 @@ mongoose
     useFindAndModify: true,
     useUnifiedTopology: true,
   })
-  .then((con) => {
-    console.log("DB connection SUCCESSFUL", con.connections);
+  .then(() => {
+    console.log("DB connection SUCCESSFUL");
   })
   .catch((error) => {
     console.log("DB connection FAILED: ", error);
