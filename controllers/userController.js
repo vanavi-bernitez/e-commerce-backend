@@ -2,9 +2,15 @@ import { UserModel } from "../models/userModel.js";
 import { generateOTP } from "../utils/generateOTP.js";
 import { sendOTP } from "../utils/sendOTP.js";
 
+
 const signUp = async (req, res) => {
   try {
-    const newUser = await UserModel.create(req.body);
+    // const newUser = await UserModel.create(req.body); //self notes: This way anyone can register as an admin
+    const newUser = await UserModel.create({
+      name: req.body.name,
+      lastName: req.body.lastName,
+      phoneNumber: req.body.phoneNumber,
+    });
     res.status(201).json({
       status: "success",
       data: {
